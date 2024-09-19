@@ -1,4 +1,6 @@
-export default function HomePage() {
+export default async function HomePage() {
+  const data = await fetch('/api')
+
   return ( 
     <>
       <section>
