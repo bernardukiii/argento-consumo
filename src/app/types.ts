@@ -1,7 +1,7 @@
 export interface Drinks {
+    rank: number
     brand: string
     crp: number
-    rank: number
 }
 
 export interface Fastfood {
