@@ -1,4 +1,4 @@
-import api from "./api/route"
+import api from "./api/api"
 
 export default async function HomePage() {
   const drinks = await api.drink.list()
