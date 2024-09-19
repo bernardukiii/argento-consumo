@@ -2,6 +2,7 @@ import api from "./api/route"
 
 export default async function HomePage() {
   const drinks = await api.drink.list()
+  const foods = await api.food.list()
 
   return ( 
     <>
@@ -11,6 +12,10 @@ export default async function HomePage() {
       
         <div>
           {JSON.stringify(drinks, null, 2)}
+        </div>
+
+        <div>
+          {JSON.stringify(foods, null, 2)}
         </div>
       </section>
     </>
