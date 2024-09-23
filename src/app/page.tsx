@@ -31,7 +31,7 @@ export default async function HomePage() {
           <ul>
             {
               fizzyDrinks.map((drink) => (
-                <li className="w-40 flex justify-between">
+                <li key={(drink.crp * 2)} className="w-40 flex justify-between">
                   <span>{ drink.brand }</span>
                   <span>{ drink.crp }</span>
                   <BdkiProgress progress={drink.crp} />
