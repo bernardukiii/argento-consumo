@@ -1,4 +1,5 @@
 import api from "./api/api"
+import BdkiProgress from "./components/BdkiProgress"
 
 export default async function HomePage() {
   const drinks = await api.drink.list()
@@ -30,9 +31,10 @@ export default async function HomePage() {
           <ul>
             {
               fizzyDrinks.map((drink) => (
-                <li className="flex flex-col">
+                <li className="w-40 flex justify-between">
                   <span>{ drink.brand }</span>
                   <span>{ drink.crp }</span>
+                  <BdkiProgress progress={drink.crp} />
                 </li>
               ))
             }
