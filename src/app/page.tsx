@@ -33,11 +33,11 @@ export default async function HomePage() {
           <ul className="flex justify-center items-center w-3/4 h-full">
             {
               fizzyDrinks.map((drink) => (
-                <li key={(drink.crp * 2)} className="h-full w-full flex flex-col justify-center items-center border-2 border-red-300">
-                  <div className="h-full">
-                    <BdkiProgress progress={drink.crp} />
+                <li key={(drink.crp * 2)} className="h-full w-full flex flex-col justify-center items-center">
+                  <div className="h-full w-full flex flex-col justify-center">
+                    <BdkiProgress progress={drink.crp} label={`CRP ${drink.crp}`} />
                   </div>
-                  <span className="border-2 border-green-600">{ drink.brand }</span>
+                  <span className="w-full flex justify-center items-center">{ drink.brand }</span>
                 </li>
               ))
             }
