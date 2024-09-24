@@ -1,9 +1,19 @@
 import type {Config} from "tailwindcss";
 
 const config: Config = {
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
-  theme: {},
-  plugins: [],
+    darkMode: ["class"],
+    content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  theme: {
+  	extend: {
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		colors: {}
+  	}
+  },
+  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;
