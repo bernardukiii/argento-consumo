@@ -1,5 +1,6 @@
 import api from "./api/api"
 import BdkiProgress from "./components/BdkiProgress"
+import BdkiBarChart from "./components/BdkiBarChart"
 
 export default async function HomePage() {
   const drinks = await api.drink.list()
@@ -30,7 +31,8 @@ export default async function HomePage() {
         </div>
 
         <div className="h-3/4 w-full flex flex-col justify-center items-center">
-          <ul className="flex justify-center items-center w-3/4 h-full">
+        <BdkiBarChart data={fizzyDrinks} />
+          {/* <ul className="flex justify-center items-center w-3/4 h-full">
             {
               fizzyDrinks.map((drink) => (
                 <li key={(drink.crp * 2)} className="h-full w-full flex flex-col justify-center items-center">
@@ -41,7 +43,7 @@ export default async function HomePage() {
                 </li>
               ))
             }
-          </ul>
+          </ul> */}
         </div>
 
         {/* <div>
