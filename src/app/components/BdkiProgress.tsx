@@ -10,7 +10,7 @@ interface BdkiProgressProps {
 const BdkiProgress: React.FC<BdkiProgressProps> = ({ progress }) => {
   
   return (
-    <div>
+    <div className='w-full h-1/6 rotate-90'>
       <ProgressBar completed={progress} />
     </div>
   )
