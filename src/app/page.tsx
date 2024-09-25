@@ -30,8 +30,8 @@ export default async function HomePage() {
           <p>La idea es comparar empresas argentinas con estadounidenses para ver cuanto nos falta para competirles en nuestro mercado local</p>
         </div>
 
-        <div className="h-3/4 w-full flex flex-col justify-center items-center">
-        <BdkiBarChart data={fizzyDrinks} />
+        <div className="h-3/4 w-1/2 flex flex-col justify-center items-center">
+          <BdkiBarChart data={fizzyDrinks} />
           {/* <ul className="flex justify-center items-center w-3/4 h-full">
             {
               fizzyDrinks.map((drink) => (
