@@ -44,8 +44,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-const chartData: any[] = []
-
 const soda = {
     brandName: '',
     amountSold: 0,
@@ -56,25 +54,24 @@ interface BdkiBarChartProps {
 }
 
 const BdkiBarChart: React.FC<BdkiBarChartProps> = ({ data }) => {
-  data?.forEach((drink) => {
-    const newSoda = Object.create(soda)
+  // Create a fresh chartData array for each render
+  // using map solves the issue of undefined array. map creates a new array instead of mutating an existing one as forEach does
+  const chartData = data?.map((drink) => {
+    const newSoda = Object.create(soda);
+    newSoda.brandName = drink?.brand || "";
+    newSoda.amountSold = drink?.crp || 0;
 
-    newSoda.brandName = drink?.brand
-    newSoda.amountSold = drink?.crp
-
-    if (newSoda.brandName != '' && newSoda.amountSold >= 0) {
-        chartData.push(newSoda)
+    if (newSoda.brandName !== "" && newSoda.amountSold >= 0) {
+      return newSoda;
     }
-  })
-
-  console.log('data in chart comp', data)
-  console.log('new list of objects', chartData)
+    return null;
+  }).filter(Boolean); // Remove any null values
 
   return (
     <Card>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <BarChart accessibilityLayer data={chartData}>
+          <BarChart accessibilityLayer data={chartData} >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="brandName"
