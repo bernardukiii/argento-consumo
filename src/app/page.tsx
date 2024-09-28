@@ -23,27 +23,27 @@ export default async function HomePage() {
 
   return ( 
     <>
-      <section className="w-full h-full flex flex-col justify-center items-center">
+      <section className="w-full h-full flex flex-col justify-between items-center">
         <div className="flex flex-col justify-center items-center">
           <h1>Bienvenidos a ARGENTO-CONSUMO</h1>
-          <p>La idea es comparar empresas argentinas con estadounidenses para ver cuanto nos falta para competirles en nuestro mercado local</p>
+          <p>La idea es comparar las empresas argentinas contra las estadounidenses para ver cuanto nos falta para competirles en nuestro mercado local</p>
         </div>
 
-        <div className="h-1/2 w-1/2 flex flex-col justify-center items-center">
-          <BdkiBarChart data={fizzyDrinks} />
-          {/* <ul className="flex justify-center items-center w-3/4 h-full">
-            {
-              fizzyDrinks.map((drink) => (
-                <li key={(drink.crp * 2)} className="h-full w-full flex flex-col justify-center items-center">
-                  <div className="h-full w-full flex flex-col justify-center">
-                    <BdkiProgress progress={drink.crp} label={`CRP ${drink.crp}`} />
-                  </div>
-                  <span className="w-full flex justify-center items-center">{ drink.brand }</span>
-                </li>
-              ))
-            }
-          </ul> */}
-        </div>
+          <div className="h-full w-full bg-red-200 flex justify-around items-center">
+            {/* TRUMPOMETER LEFT */}
+            <div className="h-full w-1/6 bg-blue-200">
+              TRUMP
+            </div>
+            {/* MAIN CHART */}
+            <div className="h-full w-full flex flex-col justify-between items-center">
+                <h1 className="p-2 m-4 font-bold text-2xl">Gaseosas Cola</h1>
+                <BdkiBarChart data={fizzyDrinks} />
+            </div>
+            {/* MESSIOMETER RIGHT */}
+            <div className="h-full w-1/6 bg-blue-200">
+              Messi
+            </div>
+          </div>
 
         {/* <div>
           {JSON.stringify(foods, null, 2)}
