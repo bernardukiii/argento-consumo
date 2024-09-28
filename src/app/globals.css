@@ -7,3 +7,15 @@
   color: CanvasText;
   background-color: Canvas;
 }
+
+/* recharts-rectangle recharts-tooltip-cursor */
+.recharts-tooltip-cursor {
+  opacity: 30%;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
