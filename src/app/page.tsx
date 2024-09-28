@@ -1,5 +1,4 @@
 import api from "./api/api"
-import BdkiProgress from "./components/BdkiProgress"
 import BdkiBarChart from "./components/BdkiBarChart"
 
 export default async function HomePage() {
