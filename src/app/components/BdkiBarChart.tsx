@@ -1,15 +1,18 @@
 "use client"
 
-import { BarChart, Bar, Rectangle, XAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import { BarChart, Bar, Rectangle, XAxis, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts'
 
 const soda = {
     brandName: '',
     CRP: 0,
+    brandColor: ''
 }
 
 interface BdkiBarChartProps {
-    data: any[]
+  data: any[]
 }
+
+const colors = ['#ff2800', '#00a65f', '#004B93', 'black']
 
 const BdkiBarChart: React.FC<BdkiBarChartProps> = ({ data }) => {
   // Create a fresh chartData array for each render
@@ -24,14 +27,18 @@ const BdkiBarChart: React.FC<BdkiBarChartProps> = ({ data }) => {
     }
     return null
   }).filter(Boolean) // Remove any null values
-  // I'll have to do something similar for the chartconfig.
+  
   return (
     <ResponsiveContainer width="100%" height="100%">
         <BarChart data={chartData} style={{ width: '100%', height: '100%' }} >
           <XAxis dataKey="brandName" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="CRP" fill="#8884d8" label={{ position: 'top' }} />
+          <Bar dataKey="CRP" fill={`${chartData[0]?.brandColor}`} label={{ position: 'top'}}>
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={colors[index]} />
+            ))}
+          </Bar>
         </BarChart>
     </ResponsiveContainer>
   )
