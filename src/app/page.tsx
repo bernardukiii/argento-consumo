@@ -20,7 +20,49 @@ export default async function HomePage() {
     })
 
     return fizzyDrinks
-  }) 
+  })
+
+  const setHeight = () => {
+    let americanDrinks: number[] = []
+    let argentineDrinks: number[] = []
+    
+    // Filter Argentine and American brands based on the brand name
+    drinks.forEach((drink) => {
+      if (drink.brand.toLowerCase() === 'manaos' || drink.brand.toLowerCase() === 'cunnington') {
+        argentineDrinks.push(drink.crp)
+      } else if (drink.brand.toLowerCase() === 'coca-cola' || drink.brand.toLowerCase() === 'pepsi') {
+        americanDrinks.push(drink.crp)
+      }
+    })
+  
+    // Sum up total CRP for Argentine and American brands
+    const totalArgDrinks = argentineDrinks.reduce((accumulator, crp) => accumulator + crp, 0)
+    const totalUsDrinks = americanDrinks.reduce((accumulator, crp) => accumulator + crp, 0)
+  
+    console.log('Total Argentine drinks:', totalArgDrinks)
+    console.log('Total US drinks:', totalUsDrinks)
+  
+    // Determine the max height based on the larger total
+    const maxHeight = 100 // Represents 100% height
+  
+    // Calculate heights relative to the max height
+    let argentineHeight, americanHeight
+  
+    if (totalArgDrinks >= totalUsDrinks) {
+      argentineHeight = maxHeight
+      americanHeight = (totalUsDrinks / totalArgDrinks) * maxHeight
+    } else {
+      americanHeight = maxHeight
+      argentineHeight = (totalArgDrinks / totalUsDrinks) * maxHeight
+    }
+  
+    console.log('Argentine height:', argentineHeight + '%')
+    console.log('American height:', americanHeight + '%')
+
+    return { argentineHeight, americanHeight }
+  }
+
+  const { argentineHeight, americanHeight } = setHeight()
 
   return ( 
     <>
@@ -32,8 +74,10 @@ export default async function HomePage() {
 
           <div className="h-full w-full flex justify-around items-center">
             {/* TRUMPOMETER LEFT */}
-            <div className="h-full w-1/6 bg-blue-200">
-              <Image src={'/trump.jpg'} width={200} height={200} alt="trump" className="rounded-full" />
+            <div className="h-full w-1/6 flex items-end">
+              <div style={{ height: `${americanHeight}%` }}>
+                <Image src={'/trump.jpg'} width={200} height={200} alt="trump" className="rounded-full border-4 border-red-600" />
+              </div>
             </div>
             {/* MAIN CHART */}
             <div className="h-full w-full flex flex-col justify-between items-center">
@@ -41,8 +85,10 @@ export default async function HomePage() {
                 <BdkiBarChart data={fizzyDrinks} />
             </div>
             {/* MESSIOMETER RIGHT */}
-            <div className="h-full w-1/6 bg-blue-200">
-              <Image src={'/messi.jpg'} width={200} height={200} alt="messi" className="rounded-full" />
+            <div className="h-full w-1/6 flex items-end">
+              <div style={{ height: `${argentineHeight}%` }} >
+                <Image src={'/messi.jpg'} width={200} height={200} alt="messi" className="rounded-full border-4 border-blue-600" />
+              </div>
             </div>
           </div>
 
