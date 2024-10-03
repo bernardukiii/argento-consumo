@@ -1,5 +1,6 @@
 import api from "./api/api"
 import BdkiBarChart from "./components/BdkiBarChart"
+import Image from "next/image"
 
 export default async function HomePage() {
   const drinks = await api.drink.list()
@@ -29,10 +30,10 @@ export default async function HomePage() {
           <p>La idea es comparar las empresas argentinas contra las estadounidenses para ver cuanto nos falta para competirles en nuestro mercado local</p>
         </div>
 
-          <div className="h-full w-full bg-red-200 flex justify-around items-center">
+          <div className="h-full w-full flex justify-around items-center">
             {/* TRUMPOMETER LEFT */}
             <div className="h-full w-1/6 bg-blue-200">
-              TRUMP
+              <Image src={'/trump.jpg'} width={200} height={200} alt="trump" className="rounded-full" />
             </div>
             {/* MAIN CHART */}
             <div className="h-full w-full flex flex-col justify-between items-center">
@@ -41,7 +42,7 @@ export default async function HomePage() {
             </div>
             {/* MESSIOMETER RIGHT */}
             <div className="h-full w-1/6 bg-blue-200">
-              Messi
+              <Image src={'/messi.jpg'} width={200} height={200} alt="messi" className="rounded-full" />
             </div>
           </div>
 
